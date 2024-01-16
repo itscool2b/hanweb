@@ -55,7 +55,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "safastzim.com",
+    "https://safastzim.com",
     
 ]
 
