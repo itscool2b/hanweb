@@ -53,11 +53,11 @@ MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
     
 ]
-CORS_ALLOW_ALL_ORIGINS = True
-#CORS_ALLOWED_ORIGINS = [
-    #"https://safastzim.com",
+#CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = [
+    "https://safastzim.com",
     
-#]
+]
 
 ROOT_URLCONF = "hanweb.urls"
 
