@@ -59,6 +59,10 @@ CORS_ALLOWED_ORIGINS = [
     
 ]
 
+RECAPTCHA_PUBLIC_KEY = 'your-public-key'
+RECAPTCHA_PRIVATE_KEY = 'your-private-key'
+
+
 ROOT_URLCONF = "hanweb.urls"
 
 TEMPLATES = [
