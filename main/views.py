@@ -2,7 +2,6 @@ from django.core.mail import send_mail
 from django.http import JsonResponse
 from .forms import FormModelForm
 from django.views.decorators.csrf import csrf_protect
-from django.views.decorators.csrf import csrf_protect
 from ratelimit.decorators import ratelimit
 
 @ratelimit(key='ip', rate='5/m', block=True)
