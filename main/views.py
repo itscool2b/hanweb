@@ -1,31 +1,31 @@
-from django.shortcuts import render
 from django.core.mail import send_mail
 from django.http import JsonResponse
-from .models import formmodel
-from django.views.decorators.csrf import csrf_exempt
-@csrf_exempt
+from .forms import FormModelForm
+from django.views.decorators.csrf import csrf_protect
+
+@csrf_protect
 def form_submission(request):
     if request.method == 'POST':
-        try:
-            first_name = request.POST.get('first_name')
-            last_name = request.POST.get('last_name')
-            email = request.POST.get('email')
-            message = request.POST.get('message')
+        form = FormModelForm(request.POST)
+        if form.is_valid():
+            form_instance = form.save()
 
-            formmodel.objects.create(first_name=first_name, last_name=last_name, email=email, message=message)
+            email_content = f'From: {form_instance.email}\n' \
+                            f'Name: {form_instance.first_name}\n' \
+                            f'Message: {form_instance.message}'
 
             send_mail(
-                'New Form Submission',
-                f'Name: {first_name} {last_name}\nEmail: {email}\nMessage: {message}',
-                email,  
-                ['HanKaiwps@gmail.com'],
+                subject='New Form Submission',
+                message=email_content,
+                from_email='your-email@example.com',  # Use your domain's email address
+                recipient_list=['HanKaiwps@gmail.com'],
                 fail_silently=False,
+                reply_to=[form_instance.email]  # Include the user's email in 'reply-to'
             )
 
             return JsonResponse({'status': 'success'})
-
-        except Exception as e:
-            # Log the error if needed
-            return JsonResponse({'status': 'error', 'message': str(e)}, status=500)
+        else:
+            # Return form errors if the form is not valid
+            return JsonResponse({'errors': form.errors}, status=400)
 
     return JsonResponse({'status': 'invalid request'}, status=400)
