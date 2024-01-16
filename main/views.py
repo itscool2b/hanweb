@@ -2,7 +2,8 @@ from django.shortcuts import render
 from django.core.mail import send_mail
 from django.http import JsonResponse
 from .models import formmodel
-
+from django.views.decorators.csrf import csrf_exempt
+@csrf_exempt
 def form_submission(request):
     if request.method == 'POST':
         try:
