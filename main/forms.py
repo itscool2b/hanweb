@@ -2,10 +2,9 @@ from django import forms
 from django.core.exceptions import ValidationError
 from django.core.validators import EmailValidator
 from .models import formmodel
-from captcha.fields import ReCaptchaField
-from captcha.widgets import ReCaptchaV2Checkbox
+from captcha.fields import CaptchaField
 class FormModelForm(forms.ModelForm):
-    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox)
+    captcha = CaptchaField()
     class Meta:
         model = formmodel
         fields = ['first_name', 'last_name', 'email', 'message']
