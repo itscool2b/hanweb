@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\itsco\Desktop\hanbean\hanweb\env"
+VIRTUAL_ENV="C:\Users\itsco\Desktop\hanapi\hanweb\env"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
