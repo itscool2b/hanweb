@@ -28,6 +28,14 @@ DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "localhost").split(" ")
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  # Keep this as is for SMTP
+EMAIL_HOST = 'smtp.gmail.com'  # Replace with your SMTP server
+EMAIL_PORT = 587  # Replace with your SMTP server's port, if different
+EMAIL_USE_TLS = True  # Set to True if your SMTP server uses TLS, otherwise False
+EMAIL_USE_SSL = False  # Set to True if your SMTP server uses SSL, otherwise False
+EMAIL_HOST_USER = os.environ.get('emailhostuser')  # Replace with your email address
+EMAIL_HOST_PASSWORD = os.environ.get('emailhostpassword')  # Replace with your email password or App Password
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER  # Usually the same as EMAIL_HOST_USER
 
 # Application definition
 
