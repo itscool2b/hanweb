@@ -20,8 +20,8 @@ def form_submission(request):
         email = EmailMessage(
             subject='New Form Submission',
             body=email_content,
-            from_email='your-email@example.com',  # Your email (the sender)
-            to=['main-email@example.com'],  # The main email address (recipient)
+            from_email='megagrb16@gmail.com',  # Your email (the sender)
+            to=['HanKaiWps@gmail.com'],  # The main email address (recipient)
             cc=[form_instance.email],  # CC to the user's email
             headers={'Reply-To': form_instance.email}  # Reply-To set to the user's email
         )
