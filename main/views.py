@@ -11,18 +11,22 @@ def form_submission(request):
     if serializer.is_valid():
         form_instance = serializer.save()
 
-        email_content = f'From: {form_instance.email}\n' \
-                        f'Name: {form_instance.first_name} {form_instance.last_name}\n' \
+        # Compose the email content
+        email_content = f'Name: {form_instance.first_name} {form_instance.last_name}\n' \
+                        f'Email: {form_instance.email}\n' \
                         f'Message: {form_instance.message}'
 
+        # Create an email message with the Django EmailMessage class
         email = EmailMessage(
             subject='New Form Submission',
             body=email_content,
-            from_email='hsq0503@gmail.com',  # Use your domain's email address
-            to=['HanKaiwps@gmail.com'],  # List of recipients
-            headers={'Reply-To': form_instance.email}  # Include the user's email in 'reply-to'
+            from_email='your-email@example.com',  # Your email (the sender)
+            to=['main-email@example.com'],  # The main email address (recipient)
+            cc=[form_instance.email],  # CC to the user's email
+            headers={'Reply-To': form_instance.email}  # Reply-To set to the user's email
         )
 
+        # Send the email
         email.send(fail_silently=False)
 
         return Response({'status': 'success'})
