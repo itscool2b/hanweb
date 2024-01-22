@@ -55,11 +55,11 @@ MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
     
 ]
-#CORS_ALLOW_ALL_ORIGINS = True
-CORS_ALLOWED_ORIGINS = [
-    "https://safastzim.com",
+CORS_ALLOW_ALL_ORIGINS = True
+#CORS_ALLOWED_ORIGINS = [
+   # "https://safastzim.com",
     
-]
+#]
 
 RECAPTCHA_PUBLIC_KEY = '6Le_ClMpAAAAAHj7JDkdzlBg3lC5zGBbzuANU1FI'
 RECAPTCHA_PRIVATE_KEY = '6Le_ClMpAAAAAK53a3jDAiK29tFTrEYqZvSB2KwH'
