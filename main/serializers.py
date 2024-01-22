@@ -8,7 +8,7 @@ class FormModelSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = formmodel
-        fields = ['firstname', 'lastname', 'email', 'message']
+        fields = ['first_name', 'last_name', 'email', 'message']
 
     def validate_email(self, value):
         validate_email(value)
