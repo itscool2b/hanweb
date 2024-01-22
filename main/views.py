@@ -4,7 +4,7 @@ from django.core.mail import send_mail
 from .serializers import FormModelSerializer
 from django_ratelimit.decorators import ratelimit
 
-@ratelimit(key='ip', rate='5/m', block=True)
+@ratelimit(key='ip', rate='30/m', block=True)
 @api_view(['POST'])
 def form_submission(request):
     serializer = FormModelSerializer(data=request.data)
