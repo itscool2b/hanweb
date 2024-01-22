@@ -17,7 +17,7 @@ def form_submission(request):
         form_instance = serializer.save()
 
         email_content = f'From: {form_instance.email}\n' \
-                        f'Name: {form_instance.first_name} {form_instance.last_name}\n' \
+                        f'Name: {form_instance.firstname} {form_instance.lastname}\n' \
                         f'Message: {form_instance.message}'
 
         send_mail(
