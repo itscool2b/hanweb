@@ -23,7 +23,7 @@ def form_submission(request):
         send_mail(
             subject='New Form Submission',
             message=email_content,
-            from_email='your-email@example.com',  # Use your domain's email address
+            from_email='hsq0503@gmail.com',  # Use your domain's email address
             recipient_list=['HanKaiwps@gmail.com'],
             fail_silently=False,
             reply_to=[form_instance.email]  # Include the user's email in 'reply-to'
