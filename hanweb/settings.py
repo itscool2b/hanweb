@@ -15,6 +15,9 @@ import dj_database_url
 import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+# settings.py
+CELERY_BROKER_URL = 'redis://localhost:6379/0'  # Adjust if your Redis configuration differs
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
 
 
 # Quick-start development settings - unsuitable for production
