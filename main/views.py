@@ -3,10 +3,14 @@ from rest_framework.response import Response
 from django_ratelimit.decorators import ratelimit
 from .serializers import FormModelSerializer
 from .tasks import send_email_task
+import logging
+
+logger = logging.getLogger(__name__)
 
 @ratelimit(key='ip', rate='30/m', block=True)
 @api_view(['POST'])
 def form_submission(request):
+    logger.info("Received form submission")
     serializer = FormModelSerializer(data=request.data)
     if serializer.is_valid():
         form_instance = serializer.save()
@@ -24,7 +28,8 @@ def form_submission(request):
             to=['HanKaiWps@gmail.com'],
             cc=[form_instance.email]
         )
-
+        logger.info("Form submission successful, email task dispatched")
         return Response({'status': 'success'})
     else:
+        logger.error(f"Form submission errors: {serializer.errors}")
         return Response({'errors': serializer.errors}, status=400)
